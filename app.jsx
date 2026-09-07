@@ -23,18 +23,18 @@ const StardustBackground = () => {
         setCanvasSize();
 
         const particles = [];
-        const particleCount = 100; // Less dense for elegance
+        const particleCount = 100;
 
         for (let i = 0; i < particleCount; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 radius: Math.random() * 1.2 + 0.2,
-                vx: (Math.random() - 0.5) * 0.1, // Very slow
-                vy: (Math.random() - 0.5) * 0.1 - 0.1, // Slight upward drift
+                vx: (Math.random() - 0.5) * 0.1,
+                vy: (Math.random() - 0.5) * 0.1 - 0.1,
                 alpha: Math.random() * 0.5,
-                phase: Math.random() * Math.PI * 2, // For slow blinking
-                color: Math.random() > 0.8 ? '212, 175, 55' : '255, 255, 255' // mostly white, some gold
+                phase: Math.random() * Math.PI * 2,
+                color: Math.random() > 0.8 ? '212, 175, 55' : '255, 255, 255'
             });
         }
 
@@ -45,7 +45,6 @@ const StardustBackground = () => {
                 p.x += p.vx;
                 p.y += p.vy;
                 
-                // Slow blink effect
                 p.phase += 0.01;
                 const currentAlpha = p.alpha + Math.sin(p.phase) * 0.3;
                 const finalAlpha = Math.max(0, Math.min(0.8, currentAlpha));
@@ -129,7 +128,7 @@ const CountdownScene = ({ onComplete }) => {
 
     useEffect(() => {
         if (count > 0) {
-            const timer = setTimeout(() => setCount(count - 1), 2000); // Slower, more deliberate
+            const timer = setTimeout(() => setCount(count - 1), 2000);
             return () => clearTimeout(timer);
         } else {
             const timer = setTimeout(() => onComplete(), 1000);
@@ -163,22 +162,14 @@ const CountdownScene = ({ onComplete }) => {
     );
 };
 
-const GalleryCard = ({ memory, index }) => {
-    const cardRef = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: cardRef,
-        offset: ["0 1", "1.2 1"]
-    });
-    
-    // Smooth, linear translations for a clean gallery feel
-    const opacity = useTransform(scrollYProgress, [0, 1], [1, 1]);
-    const y = useTransform(scrollYProgress, [0, 1], [150, 0]);
-
+const GalleryCard = ({ memory }) => {
     return (
         <motion.div 
-            ref={cardRef}
-            style={{ opacity, y }}
-            className="min-h-screen flex items-center justify-center w-full sticky top-0"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="min-h-screen flex items-center justify-center w-full py-16"
         >
             <div className="gallery-card p-4 md:p-8 rounded-sm max-w-2xl w-full mx-4 flex flex-col items-center">
                 <div className="w-full aspect-[16/10] overflow-hidden mb-10 relative">
@@ -215,16 +206,13 @@ const MemoriesScene = ({ onComplete }) => {
         }
     ];
 
-    const containerRef = useRef(null);
-
     return (
         <motion.div 
-            ref={containerRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 2 }}
-            className="relative bg-obsidian-900 pb-40"
+            className="relative bg-obsidian-900 pb-36"
         >
             <div className="absolute top-12 left-1/2 -translate-x-1/2 text-center w-full z-10 opacity-40">
                 <span className="text-gold-300 font-sans tracking-[0.4em] uppercase text-[10px]">Descend</span>
@@ -232,14 +220,15 @@ const MemoriesScene = ({ onComplete }) => {
             </div>
 
             {memories.map((memory, index) => (
-                <GalleryCard key={index} memory={memory} index={index} />
+                <GalleryCard key={index} memory={memory} />
             ))}
 
-            <div className="relative z-20 mt-72 pb-40 flex flex-col items-center justify-center w-full">
+            {/* الزر أسفل آخر كارت بالكامل وبدون أي تداخل */}
+            <div className="relative z-20 pt-20 pb-32 flex flex-col items-center justify-center w-full">
                 <motion.div 
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 1.2, ease: "easeOut" }}
                     className="text-center px-4"
                 >
@@ -368,7 +357,6 @@ const FinalScene = () => {
             transition={{ duration: 4 }}
             className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-obsidian-900"
         >
-            {/* Elegant cinematic backlight */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
             <div className="z-10 text-center px-4 max-w-4xl">
@@ -398,7 +386,6 @@ const FinalScene = () => {
     );
 };
 
-
 const App = () => {
     const [scene, setScene] = useState(0); 
     const [isPlaying, setIsPlaying] = useState(false);
@@ -424,7 +411,6 @@ const App = () => {
 
     return (
         <div className="bg-obsidian-900 min-h-screen text-white font-sans hide-scrollbar">
-            {/* Cinematic ambient music */}
             <audio ref={audioRef} loop src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_82c2b3636f.mp3?filename=cinematic-ambient-124434.mp3"></audio>
 
             <button 
