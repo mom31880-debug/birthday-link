@@ -235,15 +235,15 @@ const MemoriesScene = ({ onComplete }) => {
                 <GalleryCard key={index} memory={memory} index={index} />
             ))}
 
-            <div className="relative z-20 py-24 flex flex-col items-center justify-center w-full">
+            <div className="relative z-20 mt-72 pb-40 flex flex-col items-center justify-center w-full">
                 <motion.div 
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{duration: 1.5, ease: "easeOut" }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
                     className="text-center px-4"
                 >
-                    <div className="w-12 h-[1px] bg-gold-500/50 mx-auto mb-10"></div>
+                    <div className="w-12 h-[1px] bg-gold-500/50 mx-auto mb-8"></div>
                     <motion.button
                         onClick={onComplete}
                         className="group relative px-12 py-5 overflow-hidden"
@@ -251,7 +251,8 @@ const MemoriesScene = ({ onComplete }) => {
                         <span className="relative z-10 font-cinzel tracking-[0.3em] uppercase text-sm font-light text-gold-200 group-hover:text-gold-500 transition-colors duration-700">
                             Reveal the Future
                         </span>
-                        <div className="absolute inset-0 border-t border-b border-gold-500/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 ease-in-out"></div>
+                        <div className="absolute inset-0 border border-gold-500/30 scale-90 group-hover:scale-100 transition-transform duration-700 ease-out"></div>
+                        <div className="absolute inset-0 bg-gold-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"></div>
                     </motion.button>
                 </motion.div>
             </div>
