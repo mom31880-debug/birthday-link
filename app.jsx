@@ -279,13 +279,13 @@ const QuizScene = ({ onComplete }) => {
 
     const questions = [
         {
-            q: "Where did we have our very first date?",
-            options: ["The Coffee Shop", "The Park", "The Movies", "The Restaurant"],
+            q: "What is something that always makes me smile?",
+            options: [" You", "Food", " Money 😂", " Funny videos"],
             answer: 0
         },
         {
-            q: "Who said 'I love you' first?",
-            options: ["I did", "You did", "We said it together"],
+            q: "What is my favorite thing to do when I’m having a bad day?",
+            options: ["Sleep", "Talk to you ❤️", " Watch something"],
             answer: 1
         },
         {
