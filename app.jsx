@@ -199,17 +199,17 @@ const GalleryCard = ({ memory, index }) => {
 const MemoriesScene = ({ onComplete }) => {
     const memories = [
         {
-            image: ""C:\Users\mohamed\.gemini\antigravity\scratch\birthday-surprise-pro\images\WhatsApp Image 2026-09-07 at 5.31.20 AM.jpeg"",
+            image: "C:\Users\mohamed\.gemini\antigravity\scratch\birthday-surprise-pro\images\WhatsApp Image 2026-09-07 at 5.31.20 AM.jpeg",
             title: "Genesis",
             text: "Every grand design has an origin. Ours began subtly, yet with an undeniable gravity that altered everything."
         },
         {
-            image: ""C:\Users\mohamed\.gemini\antigravity\scratch\birthday-surprise-pro\images\WhatsApp Image 2026-09-07 at 5.38.50 AM.jpeg"",
+            image: "C:\Users\mohamed\.gemini\antigravity\scratch\birthday-surprise-pro\images\WhatsApp Image 2026-09-07 at 5.38.50 AM.jpeg",
             title: "Interludes",
             text: "True elegance is found in the quiet moments between the chaos. The shared silence, the unspoken understanding."
         },
         {
-            image: ""C:\Users\mohamed\.gemini\antigravity\scratch\birthday-surprise-pro\images\WhatsApp Image 2026-09-07 at 6.23.08 AM.jpeg"",
+            image: "C:\Users\mohamed\.gemini\antigravity\scratch\birthday-surprise-pro\images\WhatsApp Image 2026-09-07 at 6.23.08 AM.jpeg",
             title: "Illumination",
             text: "A single expression from you holds more light than a thousand stars. It is the masterpiece I never tire of admiring."
         }
