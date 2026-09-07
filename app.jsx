@@ -235,11 +235,12 @@ const MemoriesScene = ({ onComplete }) => {
                 <GalleryCard key={index} memory={memory} index={index} />
             ))}
 
-            <div className="min-h-screen flex items-center justify-center sticky top-0 mt-32">
+            <div className="relative z-20 py-24 flex flex-col items-center justify-center w-full">
                 <motion.div 
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 2 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{duration: 1.5, ease: "easeOut" }}
                     className="text-center px-4"
                 >
                     <div className="w-12 h-[1px] bg-gold-500/50 mx-auto mb-10"></div>
