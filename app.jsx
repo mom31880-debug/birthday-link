@@ -162,14 +162,28 @@ const CountdownScene = ({ onComplete }) => {
     );
 };
 
-const GalleryCard = ({ memory }) => {
+const GalleryCard = ({ memory, index, totalCards }) => {
+    const cardRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: cardRef,
+        offset: ["0 1", "1.2 1"]
+    });
+    
+    const isLast = index === totalCards - 1;
+
+    // لجميع الكروت الشفافية 1، ما عدا الكارت الأخير يتلاشى في نهاية السكرول ليفسح المجال للزر
+    const opacity = useTransform(
+        scrollYProgress, 
+        isLast ? [0, 0.4, 0.85, 1] : [0, 1], 
+        isLast ? [1, 1, 0.4, 0] : [1, 1]
+    );
+    const y = useTransform(scrollYProgress, [0, 1], [150, 0]);
+
     return (
         <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="min-h-screen flex items-center justify-center w-full py-16"
+            ref={cardRef}
+            style={{ opacity, y }}
+            className="min-h-screen flex items-center justify-center w-full sticky top-0"
         >
             <div className="gallery-card p-4 md:p-8 rounded-sm max-w-2xl w-full mx-4 flex flex-col items-center">
                 <div className="w-full aspect-[16/10] overflow-hidden mb-10 relative">
@@ -206,33 +220,41 @@ const MemoriesScene = ({ onComplete }) => {
         }
     ];
 
+    const containerRef = useRef(null);
+
     return (
         <motion.div 
+            ref={containerRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 2 }}
-            className="relative bg-obsidian-900 pb-36"
+            className="relative bg-obsidian-900 pb-20"
         >
             <div className="absolute top-12 left-1/2 -translate-x-1/2 text-center w-full z-10 opacity-40">
                 <span className="text-gold-300 font-sans tracking-[0.4em] uppercase text-[10px]">Descend</span>
                 <div className="w-[1px] h-16 bg-gradient-to-b from-gold-300 to-transparent mx-auto mt-4 animate-pulse-slow"></div>
             </div>
 
+            {/* عرض الكروت مع تفعيل تأثير الـ stacking للجميع */}
             {memories.map((memory, index) => (
-                <GalleryCard key={index} memory={memory} />
+                <GalleryCard 
+                    key={index} 
+                    memory={memory} 
+                    index={index} 
+                    totalCards={memories.length}
+                />
             ))}
 
-            {/* الزر أسفل آخر كارت بالكامل وبدون أي تداخل */}
-            <div className="relative z-20 pt-20 pb-32 flex flex-col items-center justify-center w-full">
+            {/* مشهد الزر: يثبت في مكانه ويدخل بنعومة بعد اختفاء آخر كارت */}
+            <div className="min-h-screen flex items-center justify-center sticky top-0 z-20 pointer-events-auto">
                 <motion.div 
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1.2, ease: "easeOut" }}
                     className="text-center px-4"
                 >
-                    <div className="w-12 h-[1px] bg-gold-500/50 mx-auto mb-8"></div>
+                    <div className="w-12 h-[1px] bg-gold-500/50 mx-auto mb-10"></div>
                     <motion.button
                         onClick={onComplete}
                         className="group relative px-12 py-5 overflow-hidden"
