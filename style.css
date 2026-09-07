@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold-glow: rgba(212, 175, 55, 0.3);
+  --gold-glow-strong: rgba(212, 175, 55, 0.6);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Elegant Glassmorphism */
+.glass-elegant {
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-card {
+  background: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  transition: border-color 0.5s ease;
+}
+
+.gallery-card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* Sophisticated glowing text */
+.text-glow-gold {
+  text-shadow: 0 0 15px var(--gold-glow), 0 0 30px var(--gold-glow);
+}
+
+.text-glow-gold-strong {
+  text-shadow: 0 0 20px var(--gold-glow-strong), 0 0 40px var(--gold-glow-strong);
+}
+
+/* Scrollbar hiding but functional */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Clean Image Reveal */
+.bw-to-color {
+  filter: grayscale(100%) contrast(1.1) brightness(0.9);
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-card:hover .bw-to-color {
+  filter: grayscale(0%) contrast(1) brightness(1);
+  transform: scale(1.03);
+}

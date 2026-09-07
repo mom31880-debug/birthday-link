@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message | Professional Edition</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;600&family=Inter:wght@200;300;400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Framer Motion -->
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        obsidian: {
+                            900: '#030303',
+                            800: '#080808',
+                            700: '#121212',
+                        },
+                        gold: {
+                            100: '#FDFBF4',
+                            200: '#F6EFD4',
+                            300: '#EEDC9A',
+                            400: '#E4C962',
+                            500: '#D4AF37', // Champagne Gold
+                            600: '#AA8825',
+                            700: '#7B6119',
+                        }
+                    },
+                    letterSpacing: {
+                        widest: '.25em',
+                        ultra: '.4em',
+                    },
+                    animation: {
+                        'drift': 'drift 20s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        drift: {
+                            '0%': { transform: 'translateY(0) translateX(0)' },
+                            '100%': { transform: 'translateY(-100px) translateX(20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-obsidian-900 text-white overflow-x-hidden selection:bg-gold-500 selection:text-obsidian-900">
+    <div id="root"></div>
+    
+    <!-- App Script -->
+    <script type="text/babel" src="app.jsx"></script>
+</body>
+</html>
