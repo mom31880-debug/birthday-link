@@ -199,19 +199,19 @@ const GalleryCard = ({ memory, index }) => {
 const MemoriesScene = ({ onComplete }) => {
     const memories = [
         {
-            image: "C:\Users\mohamed\.gemini\antigravity\scratch\birthday-surprise-pro\images\WhatsApp Image 2026-09-07 at 5.31.20 AM.jpeg",
-            title: "Genesis",
-            text: "Every grand design has an origin. Ours began subtly, yet with an undeniable gravity that altered everything."
+            image: "images/WhatsApp Image 2026-09-07 at 5.31.20 AM.jpeg",
+            title: " My Inspiration ❤️",
+            text: "You are the inspiration behind so many things I do. You make me want to dream bigger, work harder, and believe in myself even when I doubt what I’m capable of. Your smile can change my entire day, and just knowing that you believe in me gives me a reason to keep moving forward. You inspire me not only through your words, but simply by being the person you are. When I think about the future I want, somehow, you are always a part of it."
         },
         {
-            image: "C:\Users\mohamed\.gemini\antigravity\scratch\birthday-surprise-pro\images\WhatsApp Image 2026-09-07 at 5.38.50 AM.jpeg",
-            title: "Interludes",
-            text: "True elegance is found in the quiet moments between the chaos. The shared silence, the unspoken understanding."
+            image: "images/WhatsApp Image 2026-09-07 at 5.38.50 AM.jpeg",
+            title: " My Motivation 🫶🏻",
+            text: "You are the motivation that keeps me going when things become difficult. Whenever I feel tired, lost, or unsure of myself, I remember what I’m working toward and the life I want to build. Your love gives me a different kind of strength — the kind that makes me want to keep trying, keep improving, and never settle for less than my dreams. I want to make you proud, share my achievements with you, and have you beside me through every step of the journey."
         },
         {
-            image: "C:\Users\mohamed\.gemini\antigravity\scratch\birthday-surprise-pro\images\WhatsApp Image 2026-09-07 at 6.23.08 AM.jpeg",
-            title: "Illumination",
-            text: "A single expression from you holds more light than a thousand stars. It is the masterpiece I never tire of admiring."
+            image: "images/WhatsApp Image 2026-09-07 at 6.23.08 AM.jpeg",
+            title: "My Purpose ❤️",
+            text: "You are more than just the person I love; you are a part of the life I want to create. You give meaning to the little things and make me look forward to tomorrow. I want to experience life with you — the beautiful days, the difficult days, the adventures, the quiet moments, and everything in between. I want to grow with you, build something real with you, and create memories that we can look back on years from now. If life is a journey, you are the person I want beside me for all of it."
         }
     ];
 
